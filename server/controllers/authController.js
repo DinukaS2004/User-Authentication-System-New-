@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import userModel from '../models/userModel.js';
+import transporter from '../config/nodeMailer.js';
 
 export const register = async (req,res) =>{
     const {name,email,password} = req.body;
@@ -30,6 +31,16 @@ export const register = async (req,res) =>{
             maxAge:7*24*60*10000
 
         });
+
+        //sending welcome email
+        const mailOPtions = {
+            from:process.env.SENDER_EMAIL,
+            to: email,
+            subject:'Welcome to great stack ',
+            text:`Welcome to greatstack wewbsite. Your accouont has been created with email id:${email}`
+            
+        }
+        await transporter.sendMail(mailOPtions);
         return res.json({success:true});
 
     }catch (error){
