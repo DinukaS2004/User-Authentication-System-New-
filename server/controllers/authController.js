@@ -233,12 +233,12 @@ export const resetPassword = async(req,res) =>{
         const user = await userModel.findOne({email});
 
         if(!user){
-            return res.json({success:false,meassage:'User not found'});
+            return res.json({success:false,message:'User not found'});
         }
 
-        if(user.resetOtp === '' || user.resetOtp !== otp){
-            return res.json({success:false,message:'Invalid OTP'})
-        }
+        if (user.resetOtp === "" || user.resetOtp !== String(otp)) {
+      return res.json({ success: false, message: "Invalid OTP." });
+    }
         
         if(user.resetOtpExpireAt < Date.now()){
             return res.json ({success:false, message:"OTP Expired"});
@@ -255,6 +255,6 @@ export const resetPassword = async(req,res) =>{
         return res.json({success:true,message:'Password has been reset successfully'});
 
     } catch (error) {
-        return res.json({success:false,message:error.meassage})
+        return res.json({success:false,message:error.message})
     }
 } 
