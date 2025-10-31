@@ -1,7 +1,10 @@
 import React from 'react'
+import { Navbar } from '../components/Navbar'
 
 export const Home = () => {
   return (
-    <div className='text-5xl ring-offset-red-600'>Home Page</div>
+    <div>
+        <Navbar/>
+    </div>
   )
 }
