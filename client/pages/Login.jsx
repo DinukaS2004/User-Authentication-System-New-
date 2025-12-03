@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import { assets } from '../src/assets/assets'
 
-const Login = () => {
+export const Login = () => {
     
     const [state,setState] = useState('Sign Up')
 
@@ -24,4 +24,3 @@ const Login = () => {
   )
 }
 
-export default Login
