@@ -32,7 +32,7 @@ export const Login = () => {
                     toast.error(data.message);
                 }
             }else{
-                const {data} = await axios.post(backendURL+ '/api/auth/login',{email, password});
+                const {data} = await axios.post(backendURL+ '/api/auth/login',{ email, password});
 
                 if(data.success){
                     setIsloggedIn(true);
